@@ -1,3 +1,4 @@
+require('newrelic');
 const express = require('express');
 const serveStatic = require('serve-static');
 const morgan = require('morgan');
@@ -18,4 +19,4 @@ server.get('/product', (req, res) => {
   }
 });
 
-server.listen(3000);
+server.listen(3000, () => { console.log('listening on port 3000') });

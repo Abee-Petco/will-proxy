@@ -1,0 +1,14 @@
+config:
+  target: 'http://localhost:3000'
+  phases:
+    - duration: 60
+      arrivalRate: 10
+      rampTo: 80
+      name: "Warm up the application"
+    - duration: 240
+      arrivalRate: 80
+      name: "Sustained max load"
+scenarios:
+  - flow:
+          - get:
+              url: '/?={{$randomNumber(100, 10000100)}}'
