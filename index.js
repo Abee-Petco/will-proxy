@@ -9,14 +9,22 @@ server.use(morgan('dev'));
 server.use(serveStatic('./client/'));
 
 server.get('/product', (req, res) => {
+  console.log('test')
   const { itemID } = req.query;
   const itemIdNumber = Number.parseInt(itemID, 10);
 
-  if (itemIdNumber < 100 || itemIdNumber > 199 || itemIdNumber === undefined) {
+  if (itemIdNumber === undefined) {
+    console.log('404 from here')
     res.status(404).send('itemID invalid');
   } else {
     res.sendFile(`${__dirname}/client/index.html`);
   }
 });
+
+server.get('/images/url/:itemId', (req, res) => {
+  console.log('route touched')
+  let address = req.params.itemId
+  res.redirect(`http://ec2-3-22-118-253.us-east-2.compute.amazonaws.com/images/url/${address}`)
+})
 
 server.listen(3000, () => { console.log('listening on port 3000') });
