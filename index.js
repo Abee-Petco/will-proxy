@@ -21,10 +21,10 @@ server.get('/product', (req, res) => {
   }
 });
 
-server.get('/images/url/:itemId', (req, res) => {
+server.get('/images/urls/:itemId', (req, res) => {
   console.log('route touched')
   let address = req.params.itemId
-  res.redirect(`http://ec2-3-22-118-253.us-east-2.compute.amazonaws.com/images/url/${address}`)
+  res.redirect(`http://ec2-3-21-236-212.us-east-2.compute.amazonaws.com//images/url/${address}`)
 })
 
 server.listen(3000, () => { console.log('listening on port 3000') });
