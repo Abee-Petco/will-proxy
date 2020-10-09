@@ -3,5 +3,5 @@ WORKDIR /nick-proxy-server
 COPY package.json package-lock.json ./
 RUN npm install --production
 COPY . .
-CMD ["redis-server"]
+RUN redis-server
 CMD ["node", "index.js"]
