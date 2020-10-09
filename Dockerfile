@@ -3,5 +3,5 @@ WORKDIR /nick-proxy-server
 COPY package.json package-lock.json ./
 RUN npm install --production
 COPY . .
-CMD ["npm", "run", "redis-server"]
+CMD ["redis-server", "--bind", "redis", "--port", "6379"]
 CMD ["node", "index.js"]
